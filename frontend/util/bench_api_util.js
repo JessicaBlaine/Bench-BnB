@@ -1,9 +1,10 @@
 
 module.exports = {
-  fetchAllBenches(onSuccess) {
+  fetchAllBenches(bounds, onSuccess) {
     $.ajax({
       url: 'api/benches',
       dataType: 'json',
+      data: {bounds: bounds},
       success: onSuccess
     });
   }

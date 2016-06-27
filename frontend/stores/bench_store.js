@@ -13,7 +13,8 @@ BenchStore.__onDispatch = function(payload) {
 };
 
 BenchStore.all = function() {
-  return Object.assign({}, _benches);
+  let copy = Object.assign({}, _benches);
+  return Object.keys(copy).map(key => copy[key]);
 };
 
 BenchStore.resetAllBenches = function(benches) {
