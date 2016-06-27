@@ -4,6 +4,11 @@ const BenchStore = require("../stores/bench_store");
 const BenchActions = require("../actions/bench_actions");
 
 const BenchMap = React.createClass({
+  getInitialState: function() {
+    return {
+      markers: []
+    };
+  },
   componentDidMount() {
     BenchStore.addListener(this._onChange);
     const mapDOMNode = ReactDOM.findDOMNode(this.refs.map);
@@ -29,11 +34,16 @@ const BenchMap = React.createClass({
     BenchActions.fetchAllBenches(bounds);
   },
   _onChange() {
-    BenchStore.all().forEach(bench => {
-      new google.maps.Marker({
+    this.state.markers.forEach(marker => {
+      marker.setMap(null);
+    });
+
+    this.setState ({ markers: BenchStore.all().map(bench => {
+      return new google.maps.Marker({
         position: { lat: bench.lat, lng: bench.lon },
         map: this.map
       });
+    })
     });
   },
   render() {
