@@ -1,4 +1,5 @@
 class Bench < ActiveRecord::Base
+  validates :description, :lat, :lon, :number_of_seats, presence: true
 
   def self.in_bounds(bounds)
   # google map bounds will be in the following format:

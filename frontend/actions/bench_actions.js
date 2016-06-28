@@ -4,12 +4,21 @@ const BenchConstants = require('../constants/bench_constants');
 
 module.exports = {
   fetchAllBenches(bounds) {
-    BenchApiUtil.fetchAllBenches(bounds, this.recieveAllBenches);
+    BenchApiUtil.fetchAllBenches(bounds, this.receiveAllBenches);
   },
-  recieveAllBenches(benches) {
+  receiveAllBenches(benches) {
     AppDispatcher.dispatch({
       actionType: BenchConstants.BENCHES_RECEIVED,
       benches: benches
     });
-  }
+  },
+  createBench(bench) {
+    BenchApiUtil.createBench(bench, this.receiveBench);
+  },
+  receiveBench(bench) {
+    AppDispatcher.dispatch({
+      actionType: BenchConstants.BENCH_RECEIVED,
+      bench: bench
+    });
+  },
 };

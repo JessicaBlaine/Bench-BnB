@@ -7,5 +7,13 @@ module.exports = {
       data: {bounds: bounds},
       success: onSuccess
     });
+  },
+  createBench(bench, onSuccess) {
+    $.ajax({
+      url: 'api/benches',
+      method: 'POST',
+      data: {bench: bench},
+      success: onSuccess
+    });
   }
 };
