@@ -12,6 +12,7 @@ const BenchForm = require('./components/bench_form');
 const BenchStore = window.BenchStore = require('./stores/bench_store');
 const BenchApi = window.BenchApi = require('./util/bench_api_util');
 //const BenchActions = window.BenchActions = require('./actions/bench_actions');
+const SessionApi = window.SessionApi = require('./util/session_api_util');
 
 const App = React.createClass({
 
